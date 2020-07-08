@@ -1,0 +1,74 @@
+import React from 'react';
+import './SwitchDark.scss';
+import {Box, Button, Grid, Switch} from '@material-ui/core';
+import {createMuiTheme, withStyles, makeStyles, ThemeProvider} from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#000'
+        }
+    }
+});
+
+const IOSSwitch = withStyles((theme) => ({
+    root: {
+        width: 42,
+        height: 26,
+        padding: 0,
+        margin: theme.spacing(1)
+    },
+    switchBase: {
+        padding: 1,
+        '&$checked': {
+            transform: 'translateX(16px)',
+            color: theme.palette.common.white,
+            '& + $track': {
+                opacity: 1,
+                border: 'none'
+            }
+        },
+        '&$focusVisible $thumb': {
+            border: '6px solid #fff'
+        }
+    },
+    thumb: {
+        width: 24,
+        height: 24
+    },
+    track: {
+        borderRadius: 26 / 2,
+        border: `1px solid ${theme.palette.grey[400]}`,
+        backgroundColor: theme.palette.grey[50],
+        opacity: 1,
+        transition: theme
+            .transitions
+            .create(['background-color', 'border'])
+    },
+    checked: {},
+    focusVisible: {}
+}))(({
+    classes,
+    ...props
+}) => {
+    return (<Switch  
+        defaultChecked
+        focusVisibleClassName={classes.focusVisible}
+        disableRipple
+        classes={{
+        root: classes.root,
+        switchBase: classes.switchBase,
+        thumb: classes.thumb,
+        track: classes.track,
+        checked: classes.checked
+    }}
+        {...props}/>);
+});
+
+export default function SwitchDark() {
+    return (
+        <ThemeProvider theme={theme}>
+            <IOSSwitch color="primary"/>
+        </ThemeProvider>
+    );
+}

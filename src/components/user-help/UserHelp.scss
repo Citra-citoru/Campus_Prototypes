@@ -1,0 +1,18 @@
+.left-bar{
+    background-color: #f8f8f8;
+}
+.line{
+    border:1px solid #f1f2f2;
+}
+.bh-header{
+    border:1px solid grey;
+}
+.header-line{
+    border:1.5px solid #7c7c7c;
+    line-height: 0;
+}
+.full-height{
+    //solution by: david-says-reinstate-monica (https://stackoverflow.com/questions/29211998/make-div-max-height-equal-to-window-height-100px)
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+}
