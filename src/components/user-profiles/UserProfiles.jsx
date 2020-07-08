@@ -3,8 +3,30 @@ import {Typography, Box} from '@material-ui/core';
 import {makeStyles, withStyles} from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import ProfilePhoto from '../assets/images/ProfilePhoto.png';
+import DiamondIcon from '../assets/DiamondIcon';
+import image from '../assets/images/citra.jpg';
 import './UserProfiles.scss';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import styled, { css } from 'styled-components';
+
+const ImgButton = styled.button`
+cursor: pointer;
+border:none;
+background:transparent;
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: "1px solid green";
+    border-radius: 50%;
+    background-color: "#f8f8f8";
+}
+`;
+const ButtonIcon = styled.button`
+    cursor: pointer;
+    border:none;
+    background:transparent;
+`;
 const useStyles = makeStyles({
     root: {
         flexGrow: 1
@@ -24,6 +46,7 @@ const useStyles = makeStyles({
         color: '#0071cd'
     }
 });
+
 const PinkLinearProgress = withStyles(() => ({
     root: {
         height: 10,
@@ -62,24 +85,26 @@ export default function UserProfiles() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Box display="flex" flexDirection="column" className={classes.body}>
+            <Box display="flex" flexDirection="column" className={classes.body} p={2}>
                 <Box display="flex" flexDirection="column" alignItems="center">
-                    <Box m={2}>
-                        <img src={ProfilePhoto}/>
-                    </Box>
+                        <ImgButton><img src={image}/></ImgButton>
                     <Box display="flex" flexDirection="column" alignItems="center">
-                        <Box><strong>Jessi Lane</strong></Box>
+                        <Box className="user-name">
+                            <strong>Jessi Lane</strong>
+                        </Box>
                         <Box>jessilane@campusmail.com</Box>
-                        <Box ><h1 className={classes.pink}>15898</h1></Box>
+                        <Box>
+                            <h1 className={classes.pink}><DiamondIcon fill="#da0c70" height="24"/> 15898</h1>
+                        </Box>
                     </Box>
                 </Box>
                 <Box display="flex" flexDirection="row">
-                    <Box flexGrow={1}>
+                    <Box flexGrow={1} mx={2} mb={2}>
                         <strong>Skills</strong>
                     </Box>
-                    <Box><AddCircleOutlineIcon/></Box>
+                    <Box><ButtonIcon><AddCircleOutlineIcon/></ButtonIcon></Box>
                 </Box>
-                <Box display="flex" flexDirection="column" m={2}>
+                <Box display="flex" flexDirection="column" mx={2} mb={2}>
                     <Box display="flex" flexDirection="row">
                         <Box flexGrow={1}>NodeJs</Box>
                         <Box className={classes.pink}>Expert</Box>
@@ -88,7 +113,7 @@ export default function UserProfiles() {
                         <PinkLinearProgress variant="determinate" value={100}/>
                     </div>
                 </Box>
-                <Box display="flex" flexDirection="column" m={2}>
+                <Box display="flex" flexDirection="column" mx={2} mb={2}>
                     <Box display="flex" flexDirection="row">
                         <Box flexGrow={1}>ReactJs</Box>
                         <Box className={classes.green}>Intermediate</Box>
@@ -97,7 +122,7 @@ export default function UserProfiles() {
                         <GreenLinearProgress variant="determinate" value={70}/>
                     </div>
                 </Box>
-                <Box display="flex" flexDirection="column" m={2}>
+                <Box display="flex" flexDirection="column" mx={2} mb={2}>
                     <Box display="flex" flexDirection="row">
                         <Box flexGrow={1}>Machine Learning</Box>
                         <Box className={classes.green}>Intermediate</Box>
@@ -106,31 +131,31 @@ export default function UserProfiles() {
                         <GreenLinearProgress variant="determinate" value={70}/>
                     </div>
                 </Box>
-                <Box display="flex" flexDirection="column" m={2}>
+                <Box display="flex" flexDirection="column" mx={2} mb={2}>
                     <Box display="flex" flexDirection="row">
                         <Box flexGrow={1}>Angular</Box>
                         <Box className={classes.blue}>Beginner</Box>
                     </Box>
                     <div className={classes.root}>
-                        <GreenLinearProgress variant="determinate" value={40}/>
+                        <BlueLinearProgress variant="determinate" value={40}/>
                     </div>
                 </Box>
-                <Box display="flex" flexDirection="column" m={2}>
+                <Box display="flex" flexDirection="column" mx={2} mb={2}>
                     <Box display="flex" flexDirection="row">
                         <Box flexGrow={1}>MongoDB</Box>
                         <Box className={classes.blue}>Beginner</Box>
                     </Box>
                     <div className={classes.root}>
-                        <GreenLinearProgress variant="determinate" value={40}/>
+                        <BlueLinearProgress variant="determinate" value={40}/>
                     </div>
                 </Box>
-                <Box display="flex" flexDirection="column" m={2}>
+                <Box display="flex" flexDirection="column" mx={2} mb={2}>
                     <Box display="flex" flexDirection="row">
                         <Box flexGrow={1}>Phyton</Box>
                         <Box className={classes.blue}>Beginner</Box>
                     </Box>
                     <div className={classes.root}>
-                        <GreenLinearProgress variant="determinate" value={40}/>
+                        <BlueLinearProgress variant="determinate" value={40}/>
                     </div>
                 </Box>
             </Box>

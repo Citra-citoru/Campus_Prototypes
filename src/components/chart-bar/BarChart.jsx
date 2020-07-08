@@ -36,7 +36,7 @@ class BarChart extends React.Component {
                         {
                             ticks: {
                                 min: 0,
-                                max: 4000
+                                max: this.props.maxvalue
                             }
                         }
                     ]

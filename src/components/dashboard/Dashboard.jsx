@@ -51,8 +51,8 @@ export default function Dashboard() {
                                     <Tab label="All Created Tasks">
                                         <Link to="/TaskList">All Created Tasks</Link>
                                     </Tab>
-                                    <Tab label="My Task Table">
-                                        <Link to="/TaskList">My Task Table</Link>
+                                    <Tab label="My Tasks">
+                                        <Link to="/TaskList">My Tasks</Link>
                                     </Tab>
                                 </Tabs>
                             </Paper>

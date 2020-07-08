@@ -5,14 +5,20 @@ import UserProfile from '../user-profiles/UserProfiles';
 import DoughnutChart from '../chart-doughnut/DoughnutChart';
 import BarChart from '../chart-bar/BarChart';
 import barData from '../../mock-data/barData.json';
+import taskCompletedBarData from '../../mock-data/taskCompleted.json';
 import doughnutData from '../../mock-data/DoughnutData.json';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import DiamondIcon from '../assets/DiamondIcon';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             bardata: barData,
-            doughnutdata: doughnutData
+            doughnutdata: doughnutData,
+            taskCompleteddata: taskCompletedBarData
         };
     }
 
@@ -20,6 +26,7 @@ export default class App extends React.Component {
         window.setInterval(() => {
             this.setState({bardata: barData});
             this.setState({doughnutdata: doughnutData});
+            this.setState({taskCompleteddata: taskCompletedBarData});
         }, 5000)
     }
 
@@ -35,8 +42,9 @@ export default class App extends React.Component {
                         </Box>
                         <Box display="flex" flexDirection="row" alignContent="center" m={3}>
                             <Box className="doughnut" display="flex" flexDirection="column" m={2}>
-                                <Box m={2}>
-                                    <strong>Tasks</strong>
+                                <Box display="flex" flexDirection="row" m={2}>
+                                    <Box><AssignmentIcon/></Box>
+                                    <Box><strong> Tasks</strong></Box>
                                 </Box>
                                 <Box>
                                     <DoughnutChart
@@ -47,21 +55,42 @@ export default class App extends React.Component {
                             <Box className="point-bar" display="flex" flexDirection="column" m={2}>
                                 <Box display="flex" flexDirection="row" m={2}>
                                     <Box flexGrow={1}>
-                                        <strong>Points Earned</strong>
+                                        <strong><DiamondIcon fill="black" height="14"/> Points Earned</strong>
                                     </Box>
-                                    <Box>Last 1 Year</Box>
+                                    <Box display="flex" flexDirection="row">
+                                        <Box>Last 1 Year</Box>
+                                        <Box><KeyboardArrowDownIcon/></Box>
+                                    </Box>
                                 </Box>
-                                <BarChart bardata={this.state.bardata} barcolor="RGB(0, 113, 205)"/>
+                                <BarChart
+                                    bardata={this.state.bardata}
+                                    barcolor="RGB(0, 113, 205)"
+                                    maxvalue={4000}/>
                             </Box>
                         </Box>
-                        <Box className="taskCompleted-bar" display="flex" flexDirection="column"  m={5} p={2}>
+                        <Box
+                            className="taskCompleted-bar"
+                            display="flex"
+                            flexDirection="column"
+                            m={5}
+                            p={2}>
                             <Box display="flex" flexDirection="row" m={2}>
-                                <Box flexGrow={1}>
-                                    <strong>Task Completed</strong>
+                                <Box flexGrow={1} display="flex" flexDirection="row" alignItems="center">
+                                    <Box><CheckCircleOutlineIcon/></Box>
+                                    <Box>
+                                        <strong>
+                                            Task Completed</strong>
+                                    </Box>
                                 </Box>
-                                <Box>Last 1 Year</Box>
+                                <Box display="flex" flexDirection="row">
+                                    <Box>Last 1 Year</Box>
+                                    <Box><KeyboardArrowDownIcon/></Box>
+                                </Box>
                             </Box>
-                            <BarChart bardata={this.state.bardata} barcolor="#00b2ac"/>
+                            <BarChart
+                                bardata={this.state.taskCompleteddata}
+                                barcolor="#00b2ac"
+                                maxvalue={20}/>
                         </Box>
                     </Grid>
                     <Grid item xs={3}>
